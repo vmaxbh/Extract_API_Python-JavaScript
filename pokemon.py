@@ -3,7 +3,7 @@ import requests
 import json
 
 # Caminho da pasta pokemon_files
-folder_path = r"C:\Estudos\Python_API_udemy\pokemon\pokemon_files"
+folder_path = r"\pokemon_files"
 
 # Remove todos os arquivos na pasta pokemon_files
 for filename in os.listdir(folder_path):
