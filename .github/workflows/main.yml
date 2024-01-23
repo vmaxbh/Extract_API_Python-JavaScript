@@ -1,4 +1,4 @@
-name: Exemplo de Extração de API em python e Java Script
+name: Exemplo de Extração de API em Python e JavaScript
 
 on:
   push:
@@ -19,7 +19,9 @@ jobs:
         python-version: 3.8 
 
     - name: Ativar ambiente virtual Python
-      run: source venv/bin/activate 
+      run: |
+        python -m venv venv
+        source venv/bin/activate 
 
     - name: Instalar dependências Python
       run: |
