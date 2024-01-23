@@ -1,0 +1,35 @@
+name: Exemplo de Extração de API em python e Java Script
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v2
+
+    - name: Configurar ambiente Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8 
+
+    - name: Ativar ambiente virtual Python
+      run: venv\Scripts\activate  
+
+    - name: Instalar dependências Python
+      run: |
+        pip install -r requirements.txt  
+
+    - name: Executar pokemon.py
+      run: python pokemon.py
+
+    - name: Executar exer.01.py
+      run: python exer.01.py
+
+    - name: Executar seu script JavaScript
+      run: node exerc.02.js
