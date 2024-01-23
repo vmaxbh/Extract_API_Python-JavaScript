@@ -1,6 +1,7 @@
 // Importa as bibliotecas necessárias
 const axios = require('axios'); // Para fazer solicitações HTTP
 const fs = require('fs'); // Para manipulação de arquivos no sistema
+const fse = require('fs-extra'); // Para operações avançadas de sistema de arquivos
 
 // URL inicial para obter os dados
 const url = "https://jsonplaceholder.typicode.com/posts";
@@ -47,19 +48,29 @@ async function fetchData(url) {
 
 // Função principal assíncrona para controlar o fluxo do programa
 async function main() {
-    // Chama a função fetchData para obter informações de todos os posts
-    const allPosts = await fetchData(url);
+    try {
+        // Define o caminho da pasta exer.02
+        const folderPath = "C:\\Estudos\\Python_API_udemy\\pokemon\\exer.02";
 
-    // Verifica se a obtenção de dados foi bem-sucedida
-    if (allPosts) {
-        // Define o caminho do arquivo onde todos os posts serão salvos
-        const filePath = "C:\\Estudos\\Python_API_udemy\\pokemon\\exer.02\\all_posts.json";
+        // Limpa todos os arquivos na pasta exer.02
+        await fse.emptyDir(folderPath);
 
-        // Escreve o array 'allPosts' em um único arquivo JSON
-        fs.writeFileSync(filePath, JSON.stringify(allPosts, null, 2));
+        // Chama a função fetchData para obter informações de todos os posts
+        const allPosts = await fetchData(url);
 
-        // Exibe uma mensagem indicando que o arquivo foi salvo com sucesso
-        console.log(`Salvando todos os posts em: ${filePath}`);
+        // Verifica se a obtenção de dados foi bem-sucedida
+        if (allPosts) {
+            // Define o caminho do arquivo onde todos os posts serão salvos
+            const filePath = `${folderPath}\\all_posts.json`;
+
+            // Escreve o array 'allPosts' em um único arquivo JSON
+            fs.writeFileSync(filePath, JSON.stringify(allPosts, null, 2));
+
+            // Exibe uma mensagem indicando que o arquivo foi salvo com sucesso
+            console.log(`Salvando todos os posts em: ${filePath}`);
+        }
+    } catch (error) {
+        console.error('Erro durante a execução do programa:', error.message);
     }
 }
 

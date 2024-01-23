@@ -27,6 +27,11 @@ jobs:
       run: |
         pip install -r requirements.txt  
 
+    - name: Instalar dependências JavaScript
+      run: |
+        cd C:\Estudos\Python_API_udemy\pokemon\exer.02
+        npm install
+
     - name: Executar pokemon.py
       run: python pokemon.py
 

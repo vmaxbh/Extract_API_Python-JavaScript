@@ -1,6 +1,19 @@
-# Importando as bibliotecas necessárias
+import os
 import requests
 import json
+
+# Caminho da pasta pokemon_files
+folder_path = r"C:\Estudos\Python_API_udemy\pokemon\pokemon_files"
+
+# Remove todos os arquivos na pasta pokemon_files
+for filename in os.listdir(folder_path):
+    file_path = os.path.join(folder_path, filename)
+    try:
+        if os.path.isfile(file_path):
+            os.unlink(file_path)
+            print(f"Arquivo removido: {file_path}")
+    except Exception as e:
+        print(f"Erro ao remover arquivo {file_path}: {e}")
 
 # Definindo a URL base da API
 url = "https://pokeapi.co/api/v2/pokemon/"
@@ -47,7 +60,7 @@ while url != None:
         # Imprimindo o ID do pokémon
         print(response_pokemon["id"])
 
-    # Construindo o caminho do arquivo para salvar os dados  pwd
+    # Construindo o caminho do arquivo para salvar os dados
     file_path = fr"C:\Estudos\Python_API_udemy\pokemon\pokemon_files\pokemon_file_{counter}.json"
 
     # Abrindo o arquivo no modo de escrita
@@ -58,9 +71,6 @@ while url != None:
         # Escrevendo os dados da lista no arquivo
         json.dump(pokemon_list, outfile)     
     
-    # Fechando o arquivo
-    outfile.close()
-    
     # Incrementando o contador
     counter = counter + 1
     
@@ -68,4 +78,4 @@ while url != None:
     pokemon_list = list()
 
 # Imprimindo a lista vazia de pokémons
-print(pokemon_list)   
+print(pokemon_list)
