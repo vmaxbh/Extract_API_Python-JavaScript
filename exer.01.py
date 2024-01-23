@@ -3,7 +3,7 @@ import requests
 import json
 
 # Caminho da pasta exer.01
-folder_path = r"C:\Estudos\Python_API_udemy\pokemon\exer.01"
+folder_path = os.getenv("EXER_FILES_PATH","exer.01")
 
 # Remove todos os arquivos na pasta exer.01
 for filename in os.listdir(folder_path):

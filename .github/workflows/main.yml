@@ -34,6 +34,9 @@ jobs:
 
     - name: Definir variável de ambiente POKEMON_FILES_PATH
       run: echo "POKEMON_FILES_PATH=pokemon_files" >> $GITHUB_ENV
+    
+    - name: Definir variável de ambiente EXER_FILES_PATH
+      run: echo "EXER_FILES_PATH=pokemon_files" >> $GITHUB_ENV  
 
     - name: Executar scripts
       run: |
