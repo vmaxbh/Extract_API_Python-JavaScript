@@ -32,11 +32,11 @@ jobs:
         cd exer.02
         npm install
 
-    - name: Executar pokemon.py
-      run: python pokemon.py
+    - name: Definir variável de ambiente POKEMON_FILES_PATH
+      run: echo "POKEMON_FILES_PATH=pokemon_files" >> $GITHUB_ENV
 
-    - name: Executar exer.01.py
-      run: python exer.01.py
-
-    - name: Executar seu script JavaScript
-      run: node exerc.02.js
+    - name: Executar scripts
+      run: |
+        python pokemon.py
+        python exer.01.py
+        node exerc.02.js
