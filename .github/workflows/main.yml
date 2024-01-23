@@ -19,7 +19,7 @@ jobs:
         python-version: 3.8 
 
     - name: Ativar ambiente virtual Python
-      run: venv\Scripts\activate  
+      run: source venv/bin/activate 
 
     - name: Instalar dependências Python
       run: |
